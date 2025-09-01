@@ -1,0 +1,83 @@
+/* 作用域前缀：.study —— 避免影响其它页面 */
+.study{
+  --bg:#0b1220; --card:#111a2b; --muted:#8aa4c7; --text:#eaf2ff; --accent:#7aa2ff;
+  --ok:#51d88a; --warn:#ffcc66; --bad:#ff6b6b; --line:#22314f;
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+  margin:0; color:var(--text);
+  background:radial-gradient(1000px 500px at 20% -10%, #17233a, #0b1220 55%), var(--bg);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "PingFang SC",
+    "Noto Sans CJK SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+}
+.study header{position:sticky; top:0; z-index:10; backdrop-filter:saturate(180%) blur(10px);
+  background:linear-gradient(180deg, rgba(17,26,43,.9), rgba(17,26,43,.6)); border-bottom:1px solid #1f2a44}
+.study .wrap{max-width:1120px; margin:0 auto; padding:18px 20px}
+.study h1{margin:0 0 6px; font-size:22px}
+.study .sub{color:var(--muted); font-size:14px}
+.study .topline{display:grid; grid-template-columns: 1fr auto; gap:12px; align-items:center}
+.study .kpi{display:flex; gap:12px; flex-wrap:wrap}
+.study .kpi .card{background:var(--card); padding:10px 12px; border-radius:14px; box-shadow:var(--shadow);
+  display:flex; gap:10px; align-items:center; border:1px solid var(--line)}
+.study .count{font-weight:700; font-size:18px}
+.study .btn{background:linear-gradient(180deg, #24385f, #1a2946); color:#cfe0ff; border:1px solid #2a3e68;
+  padding:10px 12px; border-radius:12px; cursor:pointer}
+.study .btn:active{transform:translateY(1px)}
+.study main{display:grid; grid-template-columns: 330px 1fr; gap:18px; padding:18px 20px; max-width:1120px; margin:0 auto}
+@media (max-width: 920px){ .study main{grid-template-columns:1fr} }
+.study .panel{background:var(--card); border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow)}
+.study .panel h2{font-size:16px; margin:0; padding:12px 14px; border-bottom:1px solid #1f2a44; color:#d7e6ff}
+.study .panel .content{padding:12px 14px}
+
+/* Calendar */
+.study .cal{display:grid; gap:8px}
+.study .cal .nav{display:flex; justify-content:space-between; align-items:center}
+.study .cal .grid{display:grid; grid-template-columns: repeat(7, 1fr); gap:6px}
+.study .day, .study .wd{padding:8px; text-align:center; border-radius:10px}
+.study .wd{color:#8fb0ff; font-size:12px}
+.study .day{background:#0f182a; border:1px solid #203150; cursor:pointer; position:relative}
+.study .day.mute{opacity:.45}
+.study .day.today{outline:2px solid var(--accent)}
+.study .day.selected{background:linear-gradient(180deg, #1f2e4c, #18263e); border-color:#3c55a3}
+.study .day .mini{position:absolute; bottom:6px; left:50%; transform:translateX(-50%); height:6px; width:60%;
+  background:#1a2946; border-radius:999px; overflow:hidden}
+.study .day .mini > i{display:block; height:100%; background:#3b82f6; width:0%}
+.study .legend{display:flex; gap:8px; flex-wrap:wrap; margin-top:6px; font-size:12px; color:#9cb5dc}
+.study .legend span{display:inline-flex; align-items:center; gap:6px}
+.study .dot{width:8px; height:8px; border-radius:50%}
+
+/* Tasks */
+.study .tasks-head{display:flex; gap:10px; align-items:center; justify-content:space-between; flex-wrap:wrap}
+.study .tasks{display:grid; gap:10px}
+.study .task{display:grid; grid-template-columns: 100px 1fr auto; gap:10px; align-items:center; padding:10px;
+  border:1px solid var(--line); background:#0f182a; border-radius:12px}
+.study .time{font-weight:700; color:#afc8ff}
+.study .title{display:flex; align-items:center; gap:10px}
+.study .title label{cursor:pointer}
+.study .tag{font-size:11px; color:#9cb5dc; padding:4px 8px; border:1px solid #2b3f69; border-radius:999px}
+.study .cat{font-size:11px; color:#c1d7ff; padding:2px 6px; border:1px dashed #345089; border-radius:8px}
+.study .tools{display:flex; gap:8px}
+.study .tools .btn{padding:8px 10px; font-size:12px}
+.study .muted{color:#9cb5dc}
+
+/* Custom tasks */
+.study .custom{display:grid; gap:8px}
+.study .row{display:grid; grid-template-columns:1.2fr 2fr .8fr auto; gap:8px}
+.study input, .study select, .study textarea{background:#0b1220; color:#dbe8ff; border:1px solid #2a3e68; padding:10px; border-radius:10px}
+.study textarea{min-height:70px}
+.study .small{font-size:12px; color:#9cb5dc}
+
+/* Metrics */
+.study .metrics{display:grid; grid-template-columns: 1fr 1fr; gap:12px}
+.study .metrics .box{background:#0f182a; border:1px solid var(--line); border-radius:12px; padding:10px}
+.study .risk{font-size:13px}
+.study .risk.ok{color:var(--ok)}
+.study .risk.warn{color:var(--warn)}
+.study .risk.bad{color:var(--bad)}
+.study .footer{padding:14px; color:#99b3db; font-size:12px; border-top:1px solid #1f2a44}
+.study .copy{white-space:pre-wrap; word-break:break-word; background:#0b1220; border:1px dashed #2a3e68; padding:10px; border-radius:8px}
+/* 卡片上的小标签 */
+.tag{font-size:11px;padding:2px 6px;border:1px dashed #345089;border-radius:8px;color:#c1d7ff}
+
+/* 让输入框在深色背景下更好看 */
+input[type="number"], input[type="text"], textarea {
+  background:#0b1220; color:#dbe8ff; border:1px solid #2a3e68; padding:8px; border-radius:10px;
+}
