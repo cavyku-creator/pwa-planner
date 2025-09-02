@@ -1,24 +1,5 @@
-// Minimal static caching + offline fallback
-const CACHE = 'pwa-planner-v1';
-const ASSETS = ['/', '/index.html', '/manifest.webmanifest'];
+// 极简 SW：仅做安装与立即接管
+self.addEventListener('install', (e) => self.skipWaiting());
+self.addEventListener('activate', (e) => self.clients.claim());
 
-self.addEventListener('install', (e) => {
-  e.waitUntil(caches.open(CACHE).then((c) => c.addAll(ASSETS)));
-});
-
-self.addEventListener('activate', (e) => {
-  e.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))));
-});
-
-self.addEventListener('fetch', (e) => {
-  const url = new URL(e.request.url);
-  if (url.origin === location.origin) {
-    e.respondWith(
-      caches.match(e.request).then(res => res || fetch(e.request).then(r => {
-        const copy = r.clone();
-        caches.open(CACHE).then(c => c.put(e.request, copy));
-        return r;
-      }).catch(() => caches.match('/index.html')))
-    );
-  }
-});
+// 如果你暂时不做离线缓存，保持空实现即可，避免 404。
